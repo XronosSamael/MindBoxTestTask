@@ -1,13 +1,13 @@
--- Создаем БД
+-- Database creating
 IF DB_ID('MindBoxTestDb') IS NULL
 	CREATE DATABASE MindBoxTestDb;
 GO
 
--- Делаем БД текущей
+-- Current database
 USE MindBoxTestDb;
 GO
 
--- Создаем таблицы и инициализируем начальными данными
+-- Creating tables
 IF OBJECT_ID('Product') IS NULL 
 	BEGIN
 		CREATE TABLE Product(Id INT PRIMARY KEY, Name NVARCHAR(MAX) NOT NULL);
@@ -27,7 +27,7 @@ IF OBJECT_ID('ProductCategory') IS NULL
 	END
 GO
 
--- Задание
+-- Task
 SELECT Product.Name as ProductName, Category.Name as CategoryName FROM Product
     LEFT JOIN ProductCategory ON Product.Id = ProductCategory.ProductID
     LEFT JOIN Category ON Category.id = ProductCategory.CategoryId
